@@ -1,9 +1,32 @@
+import { useState } from "react";
+import { AddCategory } from "./components/AddCategory";
 
 export const GifSearchApp = () => {
+  // ! Esto es un erro no se debe de hacer
+  // if (true) {
+  //   const [categories, setCategories] = useState(["One Piece", "Alf"]);
+  // }
+  const [categories, setCategories] = useState(["One Piece", "Alf"]);
+
+  const handleAddCategory = () => {
+    // Seteo tradicional
+    setCategories([...categories, "Dragon Ball"]);
+
+    // ? Otra forma de agregar elementos al arreglo del state usando callBack
+    // setCategories(callBackCategories => [...callBackCategories, 'Dragon Ball'])
+    // console.log(categories);
+  };
   return (
     <>
       <h1>Gif Search App</h1>
       <hr></hr>
+      <AddCategory />
+      <button onClick={handleAddCategory}>Agregar</button>
+      <ol>
+        {categories.map((category) => {
+          return <li key={category}>{category}</li>;
+        })}
+      </ol>
     </>
   );
-}
+};
