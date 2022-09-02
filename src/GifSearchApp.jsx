@@ -9,22 +9,31 @@ export const GifSearchApp = () => {
   // }
   const [categories, setCategories] = useState(["One Piece", "Alf"]);
 
-  const handleAddCategory = () => {
+  const handleAddCategory = (newCatergory) => {
 
     // Seteo tradicional
-    setCategories([...categories]);
+    // setCategories([...categories]);
 
     // ? Otra forma de agregar elementos al arreglo del state usando callBack
     // setCategories(callBackCategories => [...callBackCategories, 'Dragon Ball'])
+
+    if(categories.includes(newCatergory)) return;
+    setCategories([newCatergory, ...categories ]);
     // console.log(categories);
+
   };
   return (
     <>
       <h1>Gif Search App</h1>
       <hr></hr>
-      <AddCategory  onCategories={setCategories}/>
+      <AddCategory  
+        // onCategories={setCategories}
+        onNewCategory = {(value => handleAddCategory(value))}
+      />
 
-      <button onClick={handleAddCategory}>Agregar</button>
+      <button 
+        onClick={handleAddCategory}
+      >Agregar</button>
 
       <ol>
         {categories.map((category) => {
