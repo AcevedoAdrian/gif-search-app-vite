@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { AddCategory } from './components/AddCategory';
+import GifGried from './components/GifGrid';
 
 export const GifSearchApp = () => {
 
@@ -33,13 +34,17 @@ export const GifSearchApp = () => {
 
       <button 
         onClick={handleAddCategory}
-      >Agregar</button>
+      >
+        Agregar
+      </button>
 
-      <ol>
-        {categories.map((category) => {
-          return <li key={category}>{category}</li>;
-        })}
-      </ol>
+      {categories.map((category) => ( 
+          <GifGried 
+               key={category}
+              category={category} />
+          )
+        )
+      }
     </>
   );
 };
