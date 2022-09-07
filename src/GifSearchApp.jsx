@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { AddCategory } from './components/AddCategory';
-import GifGried from './components/GifGrid';
+import { AddCategory, GifGried} from './components';
 
 export const GifSearchApp = () => {
 
@@ -8,7 +7,7 @@ export const GifSearchApp = () => {
   // if (true) {
   //   const [categories, setCategories] = useState(["One Piece", "Alf"]);
   // }
-  const [categories, setCategories] = useState(["One Piece", "Alf"]);
+  const [categories, setCategories] = useState(["One Piece"]);
 
   const handleAddCategory = (newCatergory) => {
 
@@ -19,7 +18,7 @@ export const GifSearchApp = () => {
     // setCategories(callBackCategories => [...callBackCategories, 'Dragon Ball'])
 
     if(categories.includes(newCatergory)) return;
-    setCategories([newCatergory, ...categories ]);
+    setCategories([newCatergory ]);
     // console.log(categories);
 
   };
@@ -32,11 +31,11 @@ export const GifSearchApp = () => {
         onNewCategory = {(value => handleAddCategory(value))}
       />
 
-      <button 
+      {/* <button 
         onClick={handleAddCategory}
       >
         Agregar
-      </button>
+      </button> */}
 
       {categories.map((category) => ( 
           <GifGried 

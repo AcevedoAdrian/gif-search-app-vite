@@ -51,6 +51,8 @@ h3 {
 }
 
 .card p {
+
+  color:rgb(44, 68, 99);
   background-color: white;
   flex: 1;
   font-size: 1.5rem;
