@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import { AddCategory, GifGried} from './components';
 
 export const GifSearchApp = () => {
@@ -47,3 +48,4 @@ export const GifSearchApp = () => {
     </>
   );
 };
+
