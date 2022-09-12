@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { AddCategory, GifGried} from './components';
+import { AddCategory, GifGrid} from './components';
 
 export const GifSearchApp = () => {
 
@@ -8,7 +8,7 @@ export const GifSearchApp = () => {
   // if (true) {
   //   const [categories, setCategories] = useState(["One Piece", "Alf"]);
   // }
-  const [categories, setCategories] = useState(["One Piece"]);
+  const [categories, setCategories] = useState(["one piece"]);
 
   const handleAddCategory = (newCatergory) => {
 
@@ -39,7 +39,7 @@ export const GifSearchApp = () => {
       </button> */}
 
       {categories.map((category) => ( 
-          <GifGried 
+          <GifGrid 
                key={category}
               category={category} />
           )

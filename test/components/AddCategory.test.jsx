@@ -27,18 +27,38 @@ describe('pruebas sobre el componente <AddCategory />',()=>{
   test('debe de llamar onNewCategory si el input tiene un valor',()=>{
 
     const inputValue = 'Alf';
-    render(<AddCategory onNewCategory={()=>{}} />);
+
+    // jest.fn es un mock(es una simulacion de una funcion), y yo tengo el contro de esta funcion 
+    const onNewCategory =jest.fn();
+
+    render(<AddCategory onNewCategory={onNewCategory} />);
     const input = screen.getByRole('textbox');
     //  Debemos asignar un aria-label='form' para que lo detecte
     const form = screen.getByRole('form');
+
     fireEvent.input(input,{target: {value: inputValue}});
     fireEvent.submit(form);
 
     expect(input.value).toBe('');
-
-
+    // que la funcion haya sido llamada
+    expect(onNewCategory).toHaveBeenCalled();
+    // definir la cantidad de veces queremos que sea llada.
+    expect(onNewCategory).toHaveBeenCalledTimes(1);
+    // definir con que valor queremos que sea llamada la funcion, en este caso con el valor del input
+    expect(onNewCategory).toHaveBeenCalledWith(inputValue);
 
 
   });
+  
+  test('no debe de llamar onNewCategory si el input esta vacio', () => { 
+    
+    const onNewCategory = jest.fn();
+    render(<AddCategory onNewCategory={onNewCategory}/>)
+    const form = screen.getByRole('form');
+    fireEvent.submit(form);
+    // expect(onNewCategory).toBeCalledTimes(0);
+    expect(onNewCategory).not.toHaveBeenCalled();
+
+   })
 
 });
